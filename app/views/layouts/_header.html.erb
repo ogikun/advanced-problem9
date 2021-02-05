@@ -23,3 +23,14 @@
     </div>
   </nav>
 </header>
+<% if user_signed_in? %>
+    <div class="search-form text-center mt-1">
+      <%= form_with url:searchs_path, method: :get, local: true do |f| %>
+        <%= f.text_field 'content' %>
+        <%= f.select 'model', options_for_select({ "User" => "User", "Book" => "Book" }) %>
+        <%= f.select 'how', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical" }) %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
+  <% end %>
+
