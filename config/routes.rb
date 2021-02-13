@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :book_comments,only: [:create,:destroy]
     resource :favorites,only: [:create,:destroy]
   end
+  resources :chats,only: [:create,:show]
   root 'homes#top'
   get 'home/about' => 'homes#about'
   post 'follow/:id' => 'relationships#follow', as: 'follow'
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
   get 'users/:id/following' => 'relationships#following', as: 'following'
   get 'users/:id/follower' => 'relationships#follower', as: 'follower'
   get 'searchs' => 'searchs#search'
+  
 end
